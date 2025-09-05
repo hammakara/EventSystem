@@ -31,14 +31,12 @@ class UserController extends Controller
                   ->orWhere('email', 'like', "%{$search}%");
             });
         }
-
         // Role filter
         if ($request->has('role') && $request->role) {
             $query->whereHas('roles', function ($q) use ($request) {
                 $q->where('name', $request->role);
             });
         }
-
         $users = $query->orderBy('created_at', 'desc')->paginate(15);
         $roles = Role::all();
 

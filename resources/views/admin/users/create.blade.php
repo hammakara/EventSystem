@@ -275,16 +275,23 @@
 
                 <!-- Enhanced Form -->
                 <div class="relative p-8">
-                    <form method="POST" action="{{ route('users.store') }}" class="space-y-8" x-data="{
-                        submitting: false,
-                        formData: {
-                            name: '',
-                            email: '',
-                            password: '',
-                            password_confirmation: '',
-                            roles: []
-                        }
-                    }">
+                    <form method="POST" action="{{ route('users.store') }}" class="space-y-8" 
+                          x-data="{
+                              submitting: false,
+                              formData: {
+                                  name: '',
+                                  email: '',
+                                  password: '',
+                                  password_confirmation: '',
+                                  roles: []
+                              },
+                              async submitForm() {
+                                  this.submitting = true;
+                                  // Allow the form to submit naturally
+                                  return true;
+                              }
+                          }"
+                          @submit="submitForm()">
                         @csrf
 
                         <!-- Personal Information Section -->
@@ -565,9 +572,7 @@
 
                             <!-- Submit Button -->
                             <button type="submit"
-                                    :disabled="submitting"
-                                    @click="submitting = true"
-                                    class="group relative flex-1 px-8 py-4 bg-gradient-to-r from-emerald-600 via-cyan-600 to-blue-600 hover:from-emerald-700 hover:via-cyan-700 hover:to-blue-700 disabled:from-slate-400 disabled:to-slate-500 text-white font-bold rounded-xl shadow-2xl shadow-emerald-500/30 hover:shadow-emerald-500/50 disabled:shadow-none transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 disabled:scale-100 disabled:translate-y-0">
+                                    class="group relative flex-1 px-8 py-4 bg-gradient-to-r from-emerald-600 via-cyan-600 to-blue-600 hover:from-emerald-700 hover:via-cyan-700 hover:to-blue-700 text-white font-bold rounded-xl shadow-2xl shadow-emerald-500/30 hover:shadow-emerald-500/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-1">
                                 <!-- Multiple Glow Layers -->
                                 <div class="absolute -inset-1 bg-gradient-to-r from-emerald-600 via-cyan-600 to-blue-600 rounded-2xl blur-lg opacity-70 group-hover:opacity-100 group-disabled:opacity-0 transition-opacity duration-500 animate-pulse"></div>
                                 <div class="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 via-cyan-500 to-blue-500 rounded-2xl opacity-50 group-hover:opacity-100 group-disabled:opacity-0 transition-opacity duration-300"></div>
@@ -702,19 +707,7 @@
                 });
             });
 
-            // Form submission animation
-            form.addEventListener('submit', function() {
-                const submitButton = this.querySelector('button[type="submit"]');
-
-                // Add loading state
-                submitButton.disabled = true;
-                submitButton.classList.add('animate-pulse');
-
-                // Create form submission effect
-                this.style.opacity = '0.8';
-                this.style.transform = 'scale(0.98)';
-                this.style.filter = 'blur(1px)';
-            });
+            // Remove duplicate form submission handling - let Alpine.js handle it
 
             // Progressive form reveal
             const formGroups = document.querySelectorAll('.form-group');

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title ?? 'Dashboard' }} • EventHub</title>
+    <title>{{ $title ?? 'Dashboard' }} •Ventixe</title>
 
     <!-- Build assets via Vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -14,8 +14,8 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700|instrument-sans:400,500,600,700" rel="stylesheet" />
 </head>
-<body x-data="{ 
-        sidebarCollapsed: JSON.parse(localStorage.getItem('sidebarCollapsed') ?? 'false'), 
+<body x-data="{
+        sidebarCollapsed: JSON.parse(localStorage.getItem('sidebarCollapsed') ?? 'false'),
         sidebarMobileOpen: false,
         theme: localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
         toggleCollapse(){ this.sidebarCollapsed = !this.sidebarCollapsed; localStorage.setItem('sidebarCollapsed', JSON.stringify(this.sidebarCollapsed)); },
