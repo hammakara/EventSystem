@@ -34,7 +34,6 @@ return new class extends Migration
 
         Schema::table('vendors', function (Blueprint $table) {
             $table->index('name', 'vendors_name_index');
-            $table->index('service_type', 'vendors_service_type_index');
         });
 
         // Composite indexes for pivot tables
@@ -75,7 +74,6 @@ return new class extends Migration
 
         Schema::table('vendors', function (Blueprint $table) {
             $table->dropIndex('vendors_name_index');
-            $table->dropIndex('vendors_service_type_index');
         });
 
         Schema::table('attendee_event', function (Blueprint $table) {

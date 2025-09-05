@@ -1,2 +1,13 @@
+# =============================================================================
+# Storage/Framework/Views Directory - .gitignore
+# =============================================================================
+# This directory contains compiled Blade template files.
+# These are automatically generated from your .blade.php files
+# and should be regenerated, not stored in version control.
+# =============================================================================
+
+# Ignore all compiled view files
 *
+
+# Keep .gitignore to preserve directory structure
 !.gitignore

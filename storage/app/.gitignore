@@ -1,4 +1,16 @@
+# =============================================================================
+# Storage/App Directory - .gitignore
+# =============================================================================
+# This directory stores application files like uploads, documents, etc.
+# We ignore all files here but keep the directory structure.
+# =============================================================================
+
+# Ignore all files in this directory
 *
+
+# But keep these important subdirectories
 !private/
 !public/
+
+# Always keep .gitignore files so directories are preserved in Git
 !.gitignore

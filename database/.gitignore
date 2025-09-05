@@ -1,1 +1,22 @@
-*.sqlite*
+# =============================================================================
+# Database Directory - .gitignore
+# =============================================================================
+# This directory contains database-related files.
+# We ignore database files as they should not be committed to version control.
+# Each environment should have its own database.
+# =============================================================================
+
+# SQLite database files (if using SQLite for development/testing)
+*.sqlite
+*.sqlite3
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+
+# Database backup and dump files
+*.sql
+*.dump
+*.backup
+
+# Database connection logs
+*.log

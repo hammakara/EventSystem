@@ -1,0 +1,27 @@
+{
+  "_alpine-LfbfoprD.js": {
+    "file": "js/alpine-LfbfoprD.js",
+    "name": "alpine"
+  },
+  "_animate-BaVkx4tQ.css": {
+    "file": "assets/animate-BaVkx4tQ.css",
+    "src": "_animate-BaVkx4tQ.css"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-B58vRbN1.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "js/app-B1N4XZms.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_alpine-LfbfoprD.js"
+    ]
+  }
+}

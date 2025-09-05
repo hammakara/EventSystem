@@ -1,3 +1,15 @@
+# =============================================================================
+# Storage/Framework/Cache Directory - .gitignore
+# =============================================================================
+# This directory contains Laravel's file-based cache storage.
+# Cache files are temporary and should be regenerated, not stored in Git.
+# =============================================================================
+
+# Ignore all cache files
 *
+
+# But preserve the data subdirectory structure
 !data/
+
+# Always keep .gitignore files
 !.gitignore

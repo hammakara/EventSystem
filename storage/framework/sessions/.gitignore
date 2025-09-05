@@ -1,2 +1,12 @@
+# =============================================================================
+# Storage/Framework/Sessions Directory - .gitignore
+# =============================================================================
+# This directory contains Laravel session files when using file-based sessions.
+# Session files contain user-specific data and should not be in version control.
+# =============================================================================
+
+# Ignore all session files
 *
+
+# Keep .gitignore to preserve directory structure
 !.gitignore

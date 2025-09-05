@@ -1,24 +1,126 @@
-*.log
-.DS_Store
+# =============================================================================
+# Laravel Event Management System - .gitignore Configuration
+# =============================================================================
+# This file tells Git which files and directories to ignore in version control.
+# These files are typically generated, contain sensitive data, or are specific
+# to individual development environments.
+# =============================================================================
+
+# =============================================================================
+# ENVIRONMENT & CONFIGURATION FILES
+# =============================================================================
+# These contain sensitive information like database credentials, API keys, etc.
+# Each developer should have their own copy based on .env.example
 .env
 .env.backup
 .env.production
-.phpactor.json
-.phpunit.result.cache
-/.fleet
-/.idea
-/.nova
-/.phpunit.cache
-/.vscode
-/.zed
+.env.local
+.env.testing
+
+# Composer authentication file - contains GitHub/packagist tokens
 /auth.json
-/node_modules
-/public/build
-/public/hot
-/public/storage
-/storage/*.key
-/storage/pail
-/vendor
+
+# Laravel Homestead configuration files
+# These contain local VM settings that vary per developer
 Homestead.json
 Homestead.yaml
+npm-debug.log
+yarn-error.log
+
+# =============================================================================
+# DEPENDENCIES & VENDOR FILES
+# =============================================================================
+# These are installed via Composer and NPM - should be installed fresh on each environment
+/vendor
+/node_modules
+
+# =============================================================================
+# COMPILED & GENERATED FILES
+# =============================================================================
+# These are built/compiled from source files and can be regenerated
+/public/build      # Vite compiled assets
+/public/hot        # Vite development hot reload file
+/public/storage    # Symbolic link to storage - created by artisan storage:link
+
+# =============================================================================
+# STORAGE & CACHE FILES
+# =============================================================================
+# Private keys and sensitive files in storage
+/storage/*.key
+/storage/pail      # Laravel Pail logs
+
+# =============================================================================
+# DEVELOPMENT TOOLS & IDE FILES
+# =============================================================================
+# PHPStorm/IntelliJ IDEA
+/.idea
+
+# Visual Studio Code
+/.vscode
+
+# Laravel development tools
+/.nova             # Laravel Nova admin panel
+/.fleet           # JetBrains Fleet IDE
+/.zed             # Zed editor
+
+# PHPActor configuration (PHP refactoring tool)
+.phpactor.json
+
+# =============================================================================
+# TESTING & DEBUGGING
+# =============================================================================
+# PHPUnit test result caches and coverage reports
+/.phpunit.cache
+.phpunit.result.cache
+/coverage/
+
+# =============================================================================
+# OPERATING SYSTEM FILES
+# =============================================================================
+# macOS system files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Windows system files
 Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.tmp
+*.temp
+
+# Linux system files
+*~
+
+# =============================================================================
+# LOG FILES
+# =============================================================================
+# Application logs - these can get very large and contain sensitive information
+*.log
+/storage/logs/*.log
+
+# =============================================================================
+# TEMPORARY & BACKUP FILES
+# =============================================================================
+*.bak
+*.swp
+*.swo
+*~
+
+# =============================================================================
+# DATABASE FILES
+# =============================================================================
+# SQLite database files (if using SQLite for development)
+*.sqlite
+*.sqlite3
+*.db
+
+# Database dumps
+*.sql
+*.dump
+
+

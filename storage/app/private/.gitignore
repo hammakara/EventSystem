@@ -1,2 +1,13 @@
+# =============================================================================
+# Storage/App/Private Directory - .gitignore
+# =============================================================================
+# This directory stores private application files that should not be
+# directly accessible via the web. These could include sensitive documents,
+# private uploads, or internal application files.
+# =============================================================================
+
+# Ignore all private files
 *
+
+# Keep .gitignore to preserve directory structure
 !.gitignore

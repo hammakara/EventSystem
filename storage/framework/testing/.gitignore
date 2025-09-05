@@ -1,2 +1,12 @@
+# =============================================================================
+# Storage/Framework/Testing Directory - .gitignore
+# =============================================================================
+# This directory contains files generated during testing.
+# Test-related temporary files should not be committed.
+# =============================================================================
+
+# Ignore all testing files
 *
+
+# Keep .gitignore to preserve directory structure
 !.gitignore

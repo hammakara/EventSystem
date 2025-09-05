@@ -1,2 +1,13 @@
+# =============================================================================
+# Storage/Logs Directory - .gitignore
+# =============================================================================
+# This directory contains Laravel application log files.
+# Log files can become very large and may contain sensitive information,
+# so they should never be committed to version control.
+# =============================================================================
+
+# Ignore all log files and related files
 *
+
+# Keep .gitignore so the directory is preserved in Git
 !.gitignore

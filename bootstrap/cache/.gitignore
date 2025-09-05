@@ -1,2 +1,13 @@
+# =============================================================================
+# Bootstrap/Cache Directory - .gitignore
+# =============================================================================
+# This directory contains Laravel's bootstrap cache files including
+# cached configurations, routes, services, and packages.
+# These files improve application performance but should be regenerated.
+# =============================================================================
+
+# Ignore all cached bootstrap files
 *
+
+# Keep .gitignore to preserve directory structure
 !.gitignore
