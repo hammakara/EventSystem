@@ -15,43 +15,10 @@ class EventController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Event::with('category');
+        $events = Event::latest()->paginate(10);
 
-        // Filter by category
-        if ($request->filled('category')) {
-            $query->where('category_id', $request->category);
-        }
-
-        // Filter by status
-        if ($request->filled('status')) {
-            $query->where('status', $request->status);
-        }
-
-        // Filter by date range
-        if ($request->filled('start_date')) {
-            $query->where('start_date', '>=', $request->start_date);
-        }
-
-        if ($request->filled('end_date')) {
-            $query->where('end_date', '<=', $request->end_date);
-        }
-
-        // Search by title or description
-        if ($request->filled('search')) {
-            $query->where(function ($q) use ($request) {
-                $q->where('title', 'like', '%' . $request->search . '%')
-                    ->orWhere('description', 'like', '%' . $request->search . '%');
-            });
-        }
-
-        $events = $query->orderBy('start_date', 'asc')->paginate(10);
-        $categories = Category::all();
-        $statuses = ['active', 'cancelled', 'completed'];
-
-        return view('pages.frontend.events.index', [
+        return view('pages.admin.events.index', [
             'events' => $events,
-            'categories' => $categories,
-            'statuses' => $statuses
         ]);
     }
 
@@ -61,36 +28,31 @@ class EventController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('pages.frontend.events.create', [
+        return view('pages.admin.events.create', [
             'categories' => $categories
         ]);
     }
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
             'location' => 'nullable|string|max:255',
             'category_id' => 'required|exists:categories,id',
-            'status' => 'required|in:active,cancelled,completed',
+            'status' => 'required|in:active,inactive',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
-        $data = $request->except('image');
 
         // Handle image upload
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('events', 'public');
         }
-
         Event::create($data);
-
         return redirect()->route('events.index')->with('success', 'Event created successfully.');
     }
 
@@ -100,7 +62,7 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $event->load('category');
-        return view('pages.frontend.events.show', [
+        return view('pages.admin.events.show', [
             'event' => $event
         ]);
     }
@@ -111,7 +73,7 @@ class EventController extends Controller
     public function edit(Event $event)
     {
         $categories = Category::all();
-        return view('pages.frontend.events.edit', [
+        return view('pages.admin.events.edit', [
             'event' => $event,
             'categories' => $categories
         ]);
@@ -134,7 +96,7 @@ class EventController extends Controller
         ]);
 
         $data = $request->except('image');
-
+        
         // Handle image upload
         if ($request->hasFile('image')) {
             // Delete old image if exists
@@ -144,7 +106,6 @@ class EventController extends Controller
 
             $data['image'] = $request->file('image')->store('events', 'public');
         }
-
         $event->update($data);
 
         return redirect()->route('events.index')->with('success', 'Event updated successfully.');
@@ -152,13 +113,13 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Event $event)
+    public function destroy($id)
     {
+        $event = Event::find($id);
         // Delete image if exists
         if ($event->image) {
             Storage::disk('public')->delete($event->image);
         }
-
         $event->delete();
         return redirect()->route('events.index')->with('success', 'Event deleted successfully.');
     }

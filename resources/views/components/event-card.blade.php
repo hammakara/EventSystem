@@ -1,7 +1,7 @@
 @props(['event'])
 
 <a href="{{ route('eventShow', $event) }}" class="group flex flex-col bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-lg focus:outline-none focus:shadow-lg transition-all duration-300 dark:bg-neutral-900 dark:border-neutral-800">
-    <div class="relative aspect-w-16 aspect-h-9">
+    <div class="relative aspect-w-16 h-[200px]">
         <img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="{{ $event->image_url ?? 'https://placehold.co/560x315/3b82f6/ffffff?text=Event' }}" alt="{{ $event->title }}">
     </div>
 
